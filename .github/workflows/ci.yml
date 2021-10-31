@@ -22,7 +22,7 @@ jobs:
       - id: coverage
         uses: actions-rs/grcov@v0.1
         with:
-          config: tests/grcov.yaml
+          config: .grcov.yaml
       - name: Coveralls upload
         uses: coverallsapp/github-action@master
         with:
