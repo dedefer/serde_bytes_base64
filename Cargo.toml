@@ -7,8 +7,8 @@ readme = "README.md"
 license = "MIT"
 keywords = ["serde", "base64", "bytes", "b64"]
 categories = []
-repository = ""
-homepage = ""
+repository = "https://github.com/dedefer/serde_bytes_base64"
+homepage = "https://github.com/dedefer/serde_bytes_base64"
 description = "Wrapper for Vec<u8>, which uses base64 string as serde representation."
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
