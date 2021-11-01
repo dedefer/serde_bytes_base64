@@ -33,7 +33,7 @@ fn main() {
 ```
 */
 
-use std::ops::Deref;
+use std::ops::{Deref, DerefMut};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
@@ -42,8 +42,12 @@ pub struct Bytes {
 }
 
 impl Deref for Bytes {
-    type Target = [u8];
+    type Target = Vec<u8>;
     fn deref(&self) -> &Self::Target { &self.val }
+}
+
+impl DerefMut for Bytes {
+    fn deref_mut(&mut self) -> &mut Self::Target { &mut self.val }
 }
 
 impl From<Vec<u8>> for Bytes {
@@ -90,5 +94,17 @@ mod tests {
     fn test_deserialize() {
         let result: Val = serde_json::from_str(r#"{"val":"AQID"}"#).unwrap();
         assert_eq!(result, Val { val: vec![1, 2 ,3].into() });
+    }
+
+    #[test]
+    fn test_deref() {
+        let mut result: Bytes = vec![1, 2, 3].into();
+        for byte in result.iter_mut() {
+            *byte = 100
+        }
+        result.push(100);
+        let sum = result.iter().fold(0u32, |sum, &el| sum + el as u32);
+        let v: Vec<u8> = result.into();
+        assert_eq!((v, sum), (vec![100, 100, 100, 100], 400));
     }
 }

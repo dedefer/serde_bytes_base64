@@ -1,12 +1,12 @@
 [package]
 name = "serde_bytes_base64"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["dedefer <ddf1998@gmail.com>"]
 edition = "2021"
 readme = "README.md"
 license = "MIT"
 keywords = ["serde", "base64", "bytes", "b64"]
-categories = []
+categories = ["encoding"]
 repository = "https://github.com/dedefer/serde_bytes_base64"
 homepage = "https://github.com/dedefer/serde_bytes_base64"
 description = "Wrapper for Vec<u8>, which uses base64 string as serde representation."
